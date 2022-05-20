@@ -5,10 +5,12 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+
 # Use Puma as the app server
+gem 'figaro'
 gem 'puma', '~> 5.0'
+gem 'pg', '>= 0.18', '< 2.0'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -28,17 +30,28 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'jwt'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'rubocop-rails', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
+  gem 'pronto'
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-flay', require: false
+  gem 'deprecation_toolkit', '~>1.5.1'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
